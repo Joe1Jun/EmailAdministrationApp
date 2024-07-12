@@ -9,7 +9,7 @@ public class Email {
 	private String password;
 	private String department;
 	private int mailboxCapacity;
-	private int defaultPasswordLength;
+	private int defaultPasswordLength = 10;
 	private String alernateEmail;
 	private Scanner input = new Scanner (System.in);
 	
@@ -35,7 +35,8 @@ public class Email {
 		
 		for( int i = 0 ; i < length ; i++) {
 			
-			int rand = (int)Math.random()*passwordSet.length();
+			
+			int rand = (int)(Math.random() * passwordSet.length());
 			password [i] = passwordSet.charAt(rand);
 		}
 		
