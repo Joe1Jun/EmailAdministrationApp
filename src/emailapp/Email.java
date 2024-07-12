@@ -9,6 +9,7 @@ public class Email {
 	private String password;
 	private String department;
 	private int mailboxCapacity;
+	private int defaultPasswordLength;
 	private String alernateEmail;
 	private Scanner input = new Scanner (System.in);
 	
@@ -17,20 +18,33 @@ public class Email {
 		
 		this.firstname = firstname;
 		this.lastname = lastname;
+		System.out.println("EMAIL CREATED : " + this.firstname + " " + this.lastname);
 		
 		this.department = setDepartment();
-	}
-
-
-	public String getPassword() {
-		return password;
-	}
-
-
-	public void setPassword(String password) {
-		this.password = password;
+		System.out.println("Department: " + this.department);
 		
+		//call method that returns a random password
+		this.password = randomPassword(defaultPasswordLength);
+		System.out.println("Your password is " + this.password);
 	}
+
+	private String randomPassword(int length) {
+		
+		String passwordSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#%";
+		char [] password = new char [length];
+		
+		for( int i = 0 ; i < length ; i++) {
+			
+			int rand = (int)Math.random()*passwordSet.length();
+			password [i] = passwordSet.charAt(rand);
+		}
+		
+		return new String (password);
+	}
+
+	
+
+	
 
 
 	public String getDepartment() {
@@ -38,10 +52,13 @@ public class Email {
 	}
 
 	public String setDepartment() {
-        System.out.println("Enter department");
+       
+        System.out.println("0. For none ");
         System.out.println("1. Sales");
         System.out.println("2. Development");
         System.out.println("3. Accounting");
+        System.out.println("Enter Department Code");
+        
 
          
        
